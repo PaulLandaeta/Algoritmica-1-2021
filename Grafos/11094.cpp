@@ -1,68 +1,61 @@
-#include <bits/stdc++.h>  // Para importar todas librerias
-#define input freopen("in.txt","r",stdin)
-#define output freopen("out.txt","w",stdout)
-using namespace std; 
-int rows, columns, cont;
+#include <bits/stdc++.h> // Para importar todas librerias
+#define input freopen("in.txt", "r", stdin)
+#define output freopen("out.txt", "w", stdout)
+using namespace std;
+int filas, columnas, cont;
 vector<string> matriz;
-void dfs(int row, int column) {
-    matriz[row][column] = '@';
-    if(row+1 < rows) {
-        if(matriz[row+1][column] == 'l'){
-            dfs(row+1,column);
-        }
-    }
-    if(row-1 >= 0) {
-        if(matriz[row-1][column] == 'l'){
-            dfs(row-1,column);
-        }
-    }
-    if(column+1 < columns) {
-        if(matriz[row][column+1] == 'l'){
-            dfs(row,column+1);
-        }
-    }
-    if(column-1 >= 0) {
-        if(matriz[row][column-1] == 'l'){
-            dfs(row,column-1);
-        }
-    }
+char land = '@';
+int di[] = {0, 1, -1, 0};
+int dj[] = {1, 0, 0, -1};
+void dfs(int fila, int columna)
+{
+    matriz[fila][columna] = '.';
     cont++;
+    for (int i = 0; i < 4; i++)
+    {
+        int nuevafila = fila + di[i];
+        int nuevacolumna = columna + dj[i];
+        if(nuevacolumna < 0)   nuevacolumna = columnas - 1;
+        if(nuevacolumna >= columnas)  nuevacolumna = 0;
+        if (nuevafila >= 0 && nuevafila < filas && nuevacolumna >= 0 && nuevacolumna < columnas &&
+            matriz[nuevafila][nuevacolumna] == land)
+        {
+            dfs(nuevafila, nuevacolumna);
+        }
+    }
+ 
 }
 
-
-int main(){ 
+int main()
+{
     input;
     output;
-    cin>>rows>>columns;               // scanf("%d %d", &vertices, &aristas)
-    for(int i = 0;i < rows; i++) {
-        string row;
-        cin>>row;
-        matriz.push_back(row);
-    }
-    
-    int contadorIslas = 0;
-    int islaMaxima = 0;
-    for(int i = 0; i < rows ; i++) {
-        for(int j = 0; j < columns; j++) {
-            if(matriz[i][j] == 'l') {
-                cont = 0;
-                dfs(i,j);
-                contadorIslas++;
-                islaMaxima = max(cont,islaMaxima);
+    while (cin >> filas >> columnas)
+    {
+        for (int i = 0; i < filas; i++)
+        {
+            string row;
+            cin >> row;
+            matriz.push_back(row);
+        }
+        int x, y;
+        cin >> x >> y;
+        land = matriz[x][y];
+        dfs(x, y);
+        int islaMaxima = 0;
+        for (int i = 0; i < filas; i++)
+        {
+            for (int j = 0; j < columnas; j++)
+            {
+                if (matriz[i][j] == land)
+                {
+                    cont = 0;
+                    dfs(i, j);
+                    islaMaxima = max(cont, islaMaxima);
+                }
             }
         }
+        cout << islaMaxima << endl;
+        matriz.clear();
     }
-
-    for(int i = 0; i < rows ; i++) {
-        for(int j = 0; j < columns; j++) {
-            cout<<"["<<matriz[i][j]<<"]";
-        }
-        cout<<endl;
-    }
-    cout<<contadorIslas<<endl;
-    cout<<"islaMaxima "<<islaMaxima<<endl;
-    
-
-
-    // lectura del Grafo
 }

@@ -30,16 +30,53 @@ int main(){
             cin>>fila;
             matriz.push_back(fila);
         }
+        // cout<<"---------"<<endl;
+        /* for(int i=0;i<matriz.size();i++) {
+            cout<<matriz[i]<<endl;
+        }*/
         nroDepositos = 0;
         for(int i = 0; i < filas ; i++) {
             for(int j = 0; j < columnas; j++) {
                 if(matriz[i][j] == '@') {
                     dfs(i,j);
                     nroDepositos++;
+                    cout<<"---------"<<endl;
+                    for(int i=0;i<matriz.size();i++) {
+                        cout<<matriz[i]<<endl;
+                    }
                 }
             }
         }
         cout<<nroDepositos<<endl;
         matriz.clear();
+    }             
+    
+
+/*
+    
+    int contadorIslas = 0;
+    int islaMaxima = 0;
+    for(int i = 0; i < rows ; i++) {
+        for(int j = 0; j < columns; j++) {
+            if(matriz[i][j] == 'l') {
+                cont = 0;
+                dfs(i,j);
+                contadorIslas++;
+                islaMaxima = max(cont,islaMaxima);
+            }
+        }
     }
+
+    for(int i = 0; i < rows ; i++) {
+        for(int j = 0; j < columns; j++) {
+            cout<<"["<<matriz[i][j]<<"]";
+        }
+        cout<<endl;
+    }
+    cout<<contadorIslas<<endl;
+    cout<<"islaMaxima "<<islaMaxima<<endl;
+    
+*/
+
+    // lectura del Grafo
 }

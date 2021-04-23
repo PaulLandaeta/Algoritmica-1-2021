@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "random": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }

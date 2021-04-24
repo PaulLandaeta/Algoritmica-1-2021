@@ -8,7 +8,7 @@ vector<string> matriz;
 int dx[] = {0,1,0,-1};
 int dy[] = {-1,0,1,0};
 void dfs(int fila, int columna, int i, int direccion) {
-    if(i >= nroInstrucciones) {
+    if(i > nroInstrucciones) {
         return;
     }
     if(fila < 0 || fila >= filas || columna <0 || columna>= columnas) {
@@ -26,7 +26,7 @@ void dfs(int fila, int columna, int i, int direccion) {
         int nuevaFila = fila+dy[direccion];
         int nuevaColumna = columna+dx[direccion];
         if(nuevaFila >= 0 && nuevaFila < filas && nuevaColumna >= 0 && nuevaColumna < columnas && matriz[nuevaFila][nuevaColumna] != '#') {
-            dfs(fila+dy[direccion],columna+dx[direccion],i+1,direccion);
+            dfs(nuevaFila,nuevaColumna,i+1,direccion);
         }else {
             dfs(fila,columna,i+1,direccion);
         }
@@ -46,7 +46,7 @@ void dfs(int fila, int columna, int i, int direccion) {
             direccion = 3;
         }
     }
-     dfs(fila,columna,i+1,direccion); 
+    dfs(fila,columna,i+1,direccion); 
      
 }
 

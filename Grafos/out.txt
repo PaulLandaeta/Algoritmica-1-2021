@@ -1,3 +1,7 @@
-All stations are reachable.
-All stations are reachable.
-There are stations that are unreachable.
+grupo3
+grupo1
+1
+grupo1
+grupo1
+grupo1
+3

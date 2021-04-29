@@ -16,6 +16,7 @@ int gcd_extended(int a, int b, int *x, int *y) {
 
     return gcd;
 }
+
 int main() {
     input;
     // output;

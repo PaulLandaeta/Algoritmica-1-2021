@@ -41,7 +41,7 @@ class Ideone
 			for(int i = 0;i< grafo.get(actual).size();i++) {
 				int vecino = grafo.get(actual).get(i); 
 				if(!visitados[vecino]) {
-					cola.offer(vecino); 
+					cola.offer(vecino);  
 					padres[vecino] = actual;
 					visitados[vecino] = true;
 					nivel[vecino] = nivel[actual] + 1;

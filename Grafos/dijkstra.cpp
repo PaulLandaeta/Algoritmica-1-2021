@@ -37,9 +37,9 @@ void dijkstra(int verticeInicial)
         {
             int verticeVecino = grafo[vertice][i].second;
             int pesoVecino = grafo[vertice][i].first;
-            if (distancia[vertice] + pesoVecino < distancia[verticeVecino])
+            if (distancia[vertice] - pesoVecino < distancia[verticeVecino])
             {
-                distancia[verticeVecino] = distancia[vertice] + pesoVecino;
+                distancia[verticeVecino] = distancia[vertice] - pesoVecino;
                 colaPrioridad.insert(make_pair(distancia[verticeVecino], verticeVecino));
             }
         }
@@ -60,7 +60,7 @@ int main()
         grafo[fin].push_back(make_pair(peso,ini));
     }
     dijkstra(0);
-    for(int i = 0;i<4;i++) {
+    for(int i = 0;i<vertices;i++) {
         cout<<distancia[i]<<endl;
     }
 }

@@ -32,8 +32,6 @@ void sieve2(long long number) {
             only_primes.push_back(i);
         }
     }
-
-
 }
 
 int main() {
@@ -50,8 +48,13 @@ int main() {
         if(primes[number]) {
             cout<<number<<" es primo!!!!!"<<endl;
         }
+        for (int i = 1 to primes2.size()) {
+            if(primes2[i]>= X ){
+                cont++;
+            }
+        }
         else {
-            cout<<number<<" no es primo!!!!!"<<endl;
+            cout<<cont<<" no es primo!!!!!"<<endl;
         }
     }
 }

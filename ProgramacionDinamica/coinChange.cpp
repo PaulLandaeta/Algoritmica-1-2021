@@ -4,11 +4,11 @@
 using namespace std; 
 
 int coins[]= {1,5,6,9};
-int dp[1000000];
+int dp3[1000000];
 int coinChange(int value) {
     if(value == 0)
         return 0;
-    if(dp[value] == -1){
+    if(dp3[value] == -1){
         int minValue = 1e9; // INF
         for(int i = 0; i < sizeof(coins)/sizeof(coins[0]); i++) {
             if(value-coins[i]>=0) {
@@ -16,9 +16,9 @@ int coinChange(int value) {
             }
             
         }  
-        dp[value] = minValue;  
+        dp3[value] = minValue;  
     }
-    return dp[value];
+    return dp3[value];
 }
 
 int coinChangeBottom(int value) {
@@ -43,9 +43,25 @@ int coinChangeBottom(int value) {
     return dp2[sizeof(coins)/sizeof(coins[0])][value];
 }
 
+int coinBottomUp(int n){
+    int dp[1000000];
+    memset(dp, 1000010, sizeof(dp));
+    dp[0] = 0;
+    for (int i = 0; i < sizeof(coins)/sizeof(coins[0]); i++){
+        for (int j = 1; j <= n; j++){
+            if (j>=coins[i]){
+
+                dp[j] = min(dp[j], dp[j-coins[i]] + 1 );
+
+            }
+        }
+    }
+    return dp[n];
+}
+
 int main() {
-    memset(dp,-1,sizeof dp);
+    // memset(dp,-1,sizeof dp);
     //cout<<coinChange(11)<<endl;
-    cout<<coinChangeBottom(11)<<endl;
+    cout<<coinBottomUp(11)<<endl;
     return 0;
 }

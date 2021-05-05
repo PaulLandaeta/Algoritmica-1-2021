@@ -21,8 +21,31 @@ int coinChange(int value) {
     return dp[value];
 }
 
+int coinChangeBottom(int value) {
+    int dp2[5][100];
+    memset(dp2,0,sizeof dp2);
+    for(int i = 1; i <= value ;i++) {
+        dp2[0][i] = 1e9;
+    }
+
+    for (int i = 1 ;i <= sizeof(coins)/sizeof(coins[0]); i++ ) {
+        for(int j = 0; j <= value ; j++ ){
+            if(j-coins[i-1]>=0) {
+                int valor = 1 + dp2[i][j-coins[i-1]];
+                dp2[i][j] = min (valor, dp2[i-1][j]);
+            }
+            else {
+                dp2[i][j] = dp2[i-1][j];
+            }
+        }
+    }
+    
+    return dp2[sizeof(coins)/sizeof(coins[0])][value];
+}
+
 int main() {
     memset(dp,-1,sizeof dp);
-    cout<<coinChange(11)<<endl;
+    //cout<<coinChange(11)<<endl;
+    cout<<coinChangeBottom(11)<<endl;
     return 0;
 }

@@ -59,9 +59,31 @@ int coinBottomUp(int n){
     return dp[n];
 }
 
+
+
+int coinChangeBottomWays(int value) {
+    int dp2[5][100];
+    memset(dp2,0,sizeof dp2);
+    for(int i = 0; i <= sizeof(coins)/sizeof(coins[0]) ;i++) {
+        dp2[i][0] = 1;
+    }
+
+    for (int i = 1 ;i <= sizeof(coins)/sizeof(coins[0]); i++ ) {
+        for(int j = 0; j <= value ; j++ ){
+            if(j-coins[i-1]>=0) {
+                dp2[i][j] = dp2[i][j-coins[i-1]] + dp2[i-1][j];
+            }
+            else {
+                dp2[i][j] = dp2[i-1][j];
+            }
+        }
+    }
+    
+    return dp2[sizeof(coins)/sizeof(coins[0])][value];
+}
 int main() {
     // memset(dp,-1,sizeof dp);
     //cout<<coinChange(11)<<endl;
-    cout<<coinBottomUp(11)<<endl;
+    cout<<coinChangeBottomWays(11)<<endl;
     return 0;
 }

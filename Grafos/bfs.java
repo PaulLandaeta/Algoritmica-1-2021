@@ -36,6 +36,7 @@ class Ideone
 		cola.offer(inicio);
 		visitados[inicio] = true;
 		nivel[inicio] = 1;
+		int cont = 0;
 		while(!cola.isEmpty()) {
 			int actual = cola.poll();
 			for(int i = 0;i< grafo.get(actual).size();i++) {
@@ -45,6 +46,7 @@ class Ideone
 					padres[vecino] = actual;
 					visitados[vecino] = true;
 					nivel[vecino] = nivel[actual] + 1;
+					cont++;
 				}
 			}
 		}
@@ -52,7 +54,7 @@ class Ideone
 			System.out.print("["+padres[i]+"]");
 			// grafo.add(new ArrayList<Integer>());
 		}
-		System.out.println();
+		System.out.println(cont+1);
 		for(int i = 0; i< nroVertices; i++) {
 			System.out.print("["+i+"]");
 			// grafo.add(new ArrayList<Integer>());

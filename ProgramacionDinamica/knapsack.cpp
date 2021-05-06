@@ -37,7 +37,7 @@ int knapsack(int pesoMochila) {
     return dp[5][pesoMochila];
 }
 int nroObjetos = 5;
-int knapsackTD(int i, int pesoMochila) {
+int backpackTD(int i, int pesoMochila) {
     if(pesoMochila-peso[i]<0) {
         return 0;
     }
@@ -45,7 +45,7 @@ int knapsackTD(int i, int pesoMochila) {
         return 0;
     }
     if(dp[i][pesoMochila] == -1) {
-        dp[i][pesoMochila] = max(ganancia[i]+knapsackTD(i+1,pesoMochila-peso[i]), knapsackTD(i+1,pesoMochila));
+        dp[i][pesoMochila] = max(ganancia[i]+backpackTD(i+1,pesoMochila-peso[i]), backpackTD(i+1,pesoMochila));
     }
     return dp[i][pesoMochila];
 }
@@ -54,6 +54,6 @@ int main() {
     // memset(dp,-1,sizeof dp);
     //cout<<coinChange(11)<<endl;
     memset(dp,-1,sizeof dp);
-    cout<<knapsackTD(0,12)<<endl;
+    cout<<backpackTD(0,12)<<endl;
     return 0;
 }

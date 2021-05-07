@@ -3,7 +3,7 @@
 #define output freopen("out.txt","w",stdout)
 using namespace std; 
 int peso[]={5,7,8,15,25};
-int ganancia[]={100,50,75,20,39};
+int ganancia[]={10,50,75,20,39};
 // vector<pair <int,int> > objetos;
 // objetos.push_back(make_pair(5,100));
 // objetos.push_back(make_pair(7,50));
@@ -50,10 +50,22 @@ int backpackTD(int i, int pesoMochila) {
     return dp[i][pesoMochila];
 }
 
+
+int backpackBUP1D(int pesoTotal) {
+    int sol[pesoTotal+1]; 
+    memset(sol,0,sizeof(sol));
+    for(int j = 0; j< sizeof(peso)/sizeof(peso[0]) ;j++) {
+        for (int i = pesoTotal; i >= peso[j]; i--) {
+            sol[i] = max(sol[i],ganancia[j]+sol[i-peso[j]]);
+        }
+    }
+    return sol[pesoTotal];
+}
+
 int main() {
     // memset(dp,-1,sizeof dp);
     //cout<<coinChange(11)<<endl;
     memset(dp,-1,sizeof dp);
-    cout<<backpackTD(0,12)<<endl;
+    cout<<backpackBUP1D(59)<<endl;
     return 0;
 }

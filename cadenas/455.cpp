@@ -10,7 +10,7 @@ int n;          // tamaño del texto;
 
 //TODO: verificar el tamaño de acuerdo al problema
 vector<int> b(10000);
-
+int fin;
 void kmpProcess() {
     int i = 0, j = -1;
     b[0] = -1;
@@ -23,8 +23,8 @@ void kmpProcess() {
         b[i] = j;
     }
 }
-
-int kmpSearch() {                               
+int kmpSearch() {    
+    fin = false;                          
   int freq = 0;                                     // contar cuantas veces se encuentra el patron dentro del texto
   int i = 0, j = 0;                              
   while (i < n) {                                
@@ -34,6 +34,9 @@ int kmpSearch() {
     ++i; ++j;                                    
     if (j == m) {                                
       ++freq;
+      if(i == n) {
+          fin = true;
+      }
       //printf("P is found at index %d in T\n", i-j);
       j = b[j];                                  
     }
@@ -42,7 +45,7 @@ int kmpSearch() {
 }
 int main() {
     input; 
-    //output;
+    output;
     int cases; 
     cin>>cases; 
     while(cases--) {
@@ -52,7 +55,7 @@ int main() {
         m = patron.size();
         kmpProcess();
         int freq = kmpSearch();
-        if(freq * m == n) {
+        if(freq * m == n && fin) {
             cout<<m<<endl;
         }else {
             for(int i = 1; i<n;i++) {
@@ -60,12 +63,13 @@ int main() {
                 m = patron.size();
                 kmpProcess();
                 freq = kmpSearch();
-                if(freq * m == n) {
+                if(freq * m == n && fin) {
                     cout<<m<<endl;
                     break;
                 }
             }
         }
-        cout<<endl;
+        if(cases!=0)
+            cout<<endl;
     }
 }

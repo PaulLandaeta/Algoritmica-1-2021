@@ -1,11 +1,11 @@
 5
 
-abcdefghijk
+aabaabaaa
 
-abcdabcd
+aabaabaab
 
-abababababababbababababab
+aabaabaa
 
-amanamanamanaman
+aaaa
 
-bbabb
+aaca

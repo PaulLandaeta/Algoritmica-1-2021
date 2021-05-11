@@ -22,7 +22,6 @@ void kmpProcess() {
         /// crear el pequeño patron Ho * freq = n   2 * 3 = 6 = 6 imprimes  2 
         b[i] = j;
     }
-    cout<<endl;
 }
 
 int kmpSearch() {                               
@@ -67,5 +66,6 @@ int main() {
                 }
             }
         }
+        cout<<endl;
     }
 }

@@ -24,7 +24,7 @@ void kmpProcess() {
     }
 }
 int kmpSearch() {    
-    fin = false;                          
+  fin = false;                          
   int freq = 0;                                     // contar cuantas veces se encuentra el patron dentro del texto
   int i = 0, j = 0;                              
   while (i < n) {                                

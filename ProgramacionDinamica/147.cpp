@@ -34,7 +34,7 @@ int main() {
     double cambio; 
     while(cin>>cambio && cambio) {
         // cout<<coinChangeBottomWays((int)(cambio*100))<<endl;
-        printf("%6.2f%17lld\n",cambio,coinChangeBottomWays(int((cambio+0.001)*100)));
+        printf("%6.2f%17lld\n",cambio,coinChangeBottomWays(int((cambio+0.0000000001)*100)));
         // System.out.printf();
     }
     

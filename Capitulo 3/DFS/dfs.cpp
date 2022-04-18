@@ -5,8 +5,9 @@ using namespace std;
 
 vector<int> grafo[15];
 vector<bool> visitado(15);
-
+int cont;
 void dfs(int verticeActual) {
+    cont++;
     visitado[verticeActual] = true;
     int numeroVecinos = grafo[verticeActual].size();
     for(int i = 0; i < numeroVecinos; i++) {
@@ -27,6 +28,7 @@ for(int i = 0; i < aristas;i++) {
     grafo[verticeOrigen].push_back(verticeDestino);
     grafo[verticeDestino].push_back(verticeOrigen);
 }
+cont =0;
 dfs(0);
 if(visitado[9]) {
     cout<<"Se entrego la llave"<<endl;

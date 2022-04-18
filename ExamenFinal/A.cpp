@@ -48,7 +48,7 @@ int kmpSearch() {
 
 
 int main() {
-    input; 
+    // input; 
     //output;
     cin>>n;
     cin>>texto;

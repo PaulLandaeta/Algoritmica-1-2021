@@ -21,14 +21,11 @@ void kmpProcess() {
         i++; j++;
         b[i] = j;
     }
-
-
     for(int i = 0 ; i< m; i++) {
         cout<<"["<<b[i]<<"]";
     }
     cout<<endl;
 }
-
 int kmpSearch() {                               
   int freq = 0;                                     // contar cuantas veces se encuentra el patron dentro del texto
   int i = 0, j = 0;                              

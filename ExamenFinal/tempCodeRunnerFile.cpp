@@ -1,0 +1,1 @@
+ndex(char*pat, char*txt, int number){

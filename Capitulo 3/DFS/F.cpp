@@ -20,14 +20,15 @@ void dfs(int verticeActual) {
 
 
 int main() {
+    input;
     int cases;
     cin>>cases;
-    for(int i=0; i<cases ;i++){
+    for(int k=0; k<cases ;k++){
         string aristas;
         cin>>aristas;
         // (A,B)
         // 01234
-        while(aristas[0]!="*"){
+        while(aristas[0]!='*'){
             char origenC = aristas[1];
             char destinoC = aristas[3];
             int origen = origenC - 'A';
@@ -44,11 +45,12 @@ int main() {
             vnodos.push_back(node);
         }
         int numeroNodos = vnodos.size();
-        int bellotas = 0 , arbol = 0;
+        int bellotas = 0 ;
+        int arbol = 0;
         for(int i = 0; i < numeroNodos; i++) {
-            if(!visitado[i]) {
+            if(!visitado[vnodos[i]]) {
                 cont = 0;
-                dfs(i);
+                dfs(vnodos[i]);
                 if(cont > 1) {
                     arbol++;
                 } else {
@@ -58,6 +60,12 @@ int main() {
         }
         //There are 2 tree(s) and 1 acorn(s).
         // printf("There are %d tree(s) and %d acorn(s).\n",arbol,bellotas);
-        cout<<"There are "<<arbol<<" tree(s) and "<<bellota<<" acorn(s)."<<endl;
+        cout<<"There are "<<arbol<<" tree(s) and "<<bellotas<<" acorn(s)."<<endl;
+        // Limpiar el arbol 
+        for(int i = 0; i < 26; i++) {
+            grafo[i].clear();
+            visitado[i] = false;
+        }
+        
     }
 }

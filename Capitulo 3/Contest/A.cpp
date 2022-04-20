@@ -4,6 +4,8 @@
 using namespace std; 
 int  grafo[1010][1010]; // Grafo de Matriz
 int  nivel[1010][1010]; // Nivel en Matriz
+int dx[]={1,0,-1,0};
+int dy[]={0,1,0,-1};
 int fila, columna; // filas y columnas del grafo
 // Pair (int, int)
 void bfs(int nodoX, int nodoY) {
@@ -16,29 +18,14 @@ void bfs(int nodoX, int nodoY) {
         cola.pop();
         int x = actual.first;
         int y = actual.second;
-        // // visitar el nodo de Izq
-        if(x-1 >= 0 && grafo[x-1][y] == 0) {
-            grafo[x-1][y] = 1;
-            cola.push(make_pair(x-1, y));
-            nivel[x-1][y] = nivel[x][y] + 1;
-        }
-        // visitar el nodo de derecha
-        if(x+1 < fila && grafo[x+1][y] == 0) {
-            grafo[x+1][y] = 1;
-            cola.push(make_pair(x+1, y));
-            nivel[x+1][y] = nivel[x][y] + 1;
-        }
-        // visitar el nodo de Arriba
-        if(y-1 >= 0 && grafo[x][y-1] == 0) {
-            grafo[x][y-1] = 1;
-            cola.push(make_pair(x, y-1));
-            nivel[x][y-1] = nivel[x][y] + 1;
-        }
-        // visitar el nodo de Abajo
-        if(y+1 < columna && grafo[x][y+1] == 0) {
-            grafo[x][y+1] = 1;
-            cola.push(make_pair(x, y+1));
-            nivel[x][y+1] = nivel[x][y] + 1;
+        for(int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(nx >= 0 && nx < fila && ny >= 0 && ny < columna && grafo[nx][ny] == '@') {
+                grafo[nx][ny] = '*';
+                nivel[nx][ny] = nivel[x][y] + 1;
+                cola.push(make_pair(nx, ny));
+            }
         }
     }
 }

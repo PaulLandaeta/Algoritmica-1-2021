@@ -23,7 +23,7 @@ void bfs(int nodoX, int nodoY) {
             nivel[x-1][y] = nivel[x][y] + 1;
         }
         // visitar el nodo de derecha
-        if(x+1 <= columna && grafo[x+1][y] == 0) {
+        if(x+1 < fila && grafo[x+1][y] == 0) {
             grafo[x+1][y] = 1;
             cola.push(make_pair(x+1, y));
             nivel[x+1][y] = nivel[x][y] + 1;
@@ -35,7 +35,7 @@ void bfs(int nodoX, int nodoY) {
             nivel[x][y-1] = nivel[x][y] + 1;
         }
         // visitar el nodo de Abajo
-        if(y+1 <= fila && grafo[x][y+1] == 0) {
+        if(y+1 < columna && grafo[x][y+1] == 0) {
             grafo[x][y+1] = 1;
             cola.push(make_pair(x, y+1));
             nivel[x][y+1] = nivel[x][y] + 1;
@@ -45,7 +45,7 @@ void bfs(int nodoX, int nodoY) {
 
 
 int main() {
-    //input;
+    input;
     while(cin>>fila>>columna) {
         if(fila==0 && columna==0) {
             break;

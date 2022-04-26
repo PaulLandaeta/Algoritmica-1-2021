@@ -26,23 +26,20 @@ void dijkstra(int verticeInicial)
         colaPrioridad.erase(colaPrioridad.begin()); // pop()
         int vertice = verticeActual.second; // el nodo de donde se esta viniendo
         int peso = verticeActual.first; // distancia 
-
-        if (visitados[vertice])
+        if (!visitados[vertice])
         {
-            continue;
-        }
-        visitados[vertice] = true;
-
-        for (int i = 0; i < grafo[vertice].size(); i++)
-        {
-            int verticeVecino = grafo[vertice][i].second;
-            int pesoVecino = grafo[vertice][i].first;
-            //    inf  >                    0 + 60
-            // Relajacion 
-            if (distancia[verticeVecino]> distancia[vertice] + pesoVecino )
+            visitados[vertice] = true;
+            for (int i = 0; i < grafo[vertice].size(); i++)
             {
-                distancia[verticeVecino] = distancia[vertice] + pesoVecino;
-                colaPrioridad.insert(make_pair(distancia[verticeVecino], verticeVecino));
+                int verticeVecino = grafo[vertice][i].second;
+                int pesoVecino = grafo[vertice][i].first;
+                //    inf  >                    0 + 60
+                // Relajacion 
+                if (distancia[verticeVecino]> distancia[vertice] + pesoVecino )
+                {
+                    distancia[verticeVecino] = distancia[vertice] + pesoVecino;
+                    colaPrioridad.insert(make_pair(distancia[verticeVecino], verticeVecino));
+                }
             }
         }
     }
@@ -56,6 +53,8 @@ int main()
     cin >> vertices >> aristas;
     for (int i = 0; i < aristas; i++)
     {
+        // Dijkstra no acepta pesos negativos
+        // Bellman Ford acepta pesos negativos
         int ini,fin,peso; 
         cin>>ini>>fin>>peso;
         grafo[ini].push_back(make_pair(peso,fin));

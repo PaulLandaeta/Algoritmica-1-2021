@@ -143,6 +143,7 @@ Usando una estructura de datos de pila, empezaremos con el nodo **d**, y lo empu
 Una vez que trazamos nuestros pasos hasta nuestro vértice inicial, removemos cada vertice de la pila "pop()", lo que resulta en este orden: **a** - **c** - **b** - **d**. Resulta que este es el camino exacto que nos dará el menor coste/distancia desde el nodo a hasta el nodo **d**. Muy bueno, ¿verdad?
 
 ![Algoritmo de Dijkstra visualizado, © Wikimedia Foundation](https://miro.medium.com/max/420/1*2jRCHqAbTCY7W7oG5ntMOQ.gif)
+&nbsp;
 En muchos sentidos, el algoritmo de Dijkstra es una versión sofisticada de la forma típica de recorrer el grafo primero en amplitud con la que ya estamos familiarizados. Las principales diferencias son el hecho de que es un poco más inteligente y puede manejar muy bien los grafos ponderados. Pero, si observamos el algoritmo de Dijkstra visualizado, como la animación que se muestra aquí, veremos que básicamente funciona como una búsqueda BFS, extendiéndose a lo ancho en lugar de perseguir un camino específico en profundidad.
 El ejemplo más común del algoritmo de Dijkstra en la naturaleza es en los problemas de búsqueda de caminos, como determinar direcciones o encontrar una ruta en Google Maps.
 

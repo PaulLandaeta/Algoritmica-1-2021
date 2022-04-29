@@ -17,7 +17,7 @@ void dijkstra(int verticeInicial)
     memset(visitados, 0, sizeof(visitados));
    // cola de prioridad priority_queue <pair<int, int>, greater<> > cola;
    // va ordenar de mayor a menor 
-    multiset<pair<int, int> > colaPrioridad; 
+    multiset<pair<int, int> > colaPrioridad; // log(n)sk
     distancia[verticeInicial] = 0;
     colaPrioridad.insert(make_pair(0, verticeInicial));
     while (!colaPrioridad.empty())

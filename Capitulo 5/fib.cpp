@@ -27,14 +27,17 @@ long long fibDPTP(long long n) {
 int main() {
     // 1,1,2,3,5,8,13
     // 1 2 3 4 5 6 7 
-    int n = 50;
-    memset(dp,-1,sizeof(dp));
-    dp[0] = 0;
-    dp[1] = 1;
-    auto start = high_resolution_clock::now();
-    cout<<fib(n)<<endl;
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    cout << duration.count() << endl;
+    int n = 50; // 1 
+    memset(dp,-1,sizeof(dp)); // n
+    dp[0] = 0; // 1
+    dp[1] = 1;// 1
+    auto start = high_resolution_clock::now(); //1 
+    cout<<fibDPTP(n)<<endl; // n
+    auto stop = high_resolution_clock::now();//1
+    auto duration = duration_cast<microseconds>(stop - start);//1
+    cout << duration.count() << endl;//1 
+    // T(n) = 8 + 2n;
+    // O(n) = n; 
+    // O(N) = fib() = 2^n
     return 0;
 }
